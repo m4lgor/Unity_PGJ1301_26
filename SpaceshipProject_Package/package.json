@@ -1,0 +1,118 @@
+{
+  "name": "com.uqat.pgj1301",
+  "displayName": "UQAT PGJ1301 - Kit Gameplay et Physique",
+  "version": "1.3.0",
+  "unity": "6000.0",
+  "description": "Kit pédagogique: scripts runtime, shaders et TP par cours. Samples importables dans Assets/.",
+  "author": {
+    "name": "Hugo Millet"
+  },
+  "keywords": [
+    "education",
+    "unity",
+    "physics",
+    "gameplay"
+  ],
+  "dependencies": {
+    "com.unity.ai.navigation": "2.0.8",
+    "com.unity.collab-proxy": "2.9.3",
+    "com.unity.ide.rider": "3.0.36",
+    "com.unity.ide.visualstudio": "2.0.23",
+    "com.unity.inputsystem": "1.14.1",
+    "com.unity.multiplayer.center": "1.0.0",
+    "com.unity.render-pipelines.universal": "17.0.4",
+    "com.unity.test-framework": "1.5.1",
+    "com.unity.timeline": "1.8.7",
+    "com.unity.ugui": "2.0.0",
+    "com.unity.visualscripting": "1.9.7",
+    "com.unity.modules.accessibility": "1.0.0",
+    "com.unity.modules.ai": "1.0.0",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.modules.assetbundle": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.cloth": "1.0.0",
+    "com.unity.modules.director": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.screencapture": "1.0.0",
+    "com.unity.modules.terrain": "1.0.0",
+    "com.unity.modules.terrainphysics": "1.0.0",
+    "com.unity.modules.tilemap": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.umbra": "1.0.0",
+    "com.unity.modules.unityanalytics": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
+    "com.unity.modules.unitywebrequestaudio": "1.0.0",
+    "com.unity.modules.unitywebrequesttexture": "1.0.0",
+    "com.unity.modules.unitywebrequestwww": "1.0.0",
+    "com.unity.modules.vehicles": "1.0.0",
+    "com.unity.modules.video": "1.0.0",
+    "com.unity.modules.vr": "1.0.0",
+    "com.unity.modules.wind": "1.0.0",
+    "com.unity.modules.xr": "1.0.0"
+  },
+  "samples": [
+    {
+      "displayName": "00 - Votre controleur (a importer une seule fois)",
+      "description": "MyCustomSpaceshipController.cs, le seul fichier que vous ecrivez de tout le projet. A importer UNE SEULE FOIS, au debut. Ne le reimportez jamais : cela ecraserait votre travail. Les mises a jour des niveaux passent par le sample 99 - Projet, qui ne touche pas a ce fichier.",
+      "path": "Samples~/00_Controller"
+    },
+    {
+      "displayName": "02 - Mathematiques",
+      "description": "Produits scalaire et vectoriel, rotations, geometrie. TP systeme solaire + demo gimbal lock.",
+      "path": "Samples~/02_Mathematiques"
+    },
+    {
+      "displayName": "02 - Mathematiques (Solutions)",
+      "description": "Corrections du TP systeme solaire : Earth, Moon et Satellite. Import separe, a distribuer apres la correction.",
+      "path": "Samples~/Solutions/02_Mathematiques"
+    },
+    {
+      "displayName": "03 - Lois du mouvement",
+      "description": "Les trois lois de Newton : scenes de demo (inertie, F = m a, action/reaction) et TP Rendezvous, se garer sur une cible a l'arret.",
+      "path": "Samples~/03_LawsOfMotion"
+    },
+    {
+      "displayName": "03 - Lois du mouvement (Solutions)",
+      "description": "Correction du TP Rendezvous : freinage a la bonne distance, derive de F = m a. Import separe, a distribuer apres la correction.",
+      "path": "Samples~/Solutions/03_LawsOfMotion"
+    },
+    {
+      "displayName": "04 - Collisions et contacts",
+      "description": "Appliquer des forces et resoudre des contacts. TP ForceApplier : votre propre composant pour pousser un corps, avec impulsions et forces hors centre. TP Manifold : detecter et resoudre une collision sphere/sphere a la main, sans collider.",
+      "path": "Samples~/04_Collisions"
+    },
+    {
+      "displayName": "04 - Collisions et contacts (Solutions)",
+      "description": "Corrections des TP du cours 04 : ForceApplier termine et resolution sphere/sphere. Import separe, a distribuer apres la correction.",
+      "path": "Samples~/Solutions/04_Collisions"
+    },
+    {
+      "displayName": "05 - Corps, CCD et queries",
+      "description": "Types de corps, tunneling et detection continue. TP Tunneling : trois lignes de tir, la meme balle, et votre propre Continuous ecrit avec un Physics.SphereCast.",
+      "path": "Samples~/05_BodiesAndQueries"
+    },
+    {
+      "displayName": "05 - Corps, CCD et queries (Solutions)",
+      "description": "Corrections du cours 05 : le Continuous ecrit a la main avec un SphereCast, et le ForceApplier pilote par une query. Import separe, a distribuer apres la correction.",
+      "path": "Samples~/Solutions/05_BodiesAndQueries"
+    },
+    {
+      "displayName": "06 - Contraintes et joints",
+      "description": "Les joints de Unity. TP Joints : un SpringJoint, un HingeJoint et un FixedJoint accroches a la pointe d'une pyramide, avec des ancres en espace local. TP Porte : une porte sur un HingeJoint, un moteur, et une query qui detecte la sphere et choisit le sens d'ouverture.",
+      "path": "Samples~/06_Joints"
+    },
+    {
+      "displayName": "99 - Projet",
+      "description": "Le projet Spaceship : les scenes des niveaux 00 a 06. Reimportable sans risque, votre controleur n'est pas dedans.",
+      "path": "Samples~/99_Project"
+    }
+  ]
+}

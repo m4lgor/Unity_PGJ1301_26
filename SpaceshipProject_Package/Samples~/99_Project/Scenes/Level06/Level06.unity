@@ -1,0 +1,401 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1001 &1073378382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3020107940423189812, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _xLimits.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020107940423189812, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _xLimits.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020107940423189812, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _yLimits.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020107940423189812, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _yLimits.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127931891098775096, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_Name
+      value: Basic2DScene_Project
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127931891098775211, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _Title
+      value: "Niveau 06 \u2014 Vent solaire"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127931891098775211, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _Objective
+      value: "Rester dans le Goal 6 secondes malgr\xE9 le vent, en vous accrochant
+        \xE0 un mur avec un SpringJoint."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127931891098775211, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _NewThisLevel
+      value: "Un vent solaire souffle par rafales, et pousse le vaisseau loin du
+        Goal;Le vent est plus fort que vos moteurs : seul un joint peut vous tenir;Seul
+        le SpringJoint est accept\xE9, et il doit \xEAtre connect\xE9 \xE0 un Rigidbody
+        (les murs en ont un) : on ne s'accroche pas dans le vide;Une rafale est annonc\xE9e
+        quelques secondes \xE0 l'avance : OnGustWarning;Le Goal n'est toujours pas
+        d\xE9tect\xE9 automatiquement : trouvez-le avec une query, comme au Niveau
+        05"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235851647641144989, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235851647641144989, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _SpaceshipControllerBase
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383162118079454613, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _GoalPrefab
+      value: 
+      objectReference: {fileID: 932335556306192971, guid: f75bd4afd4d3417469236726ece8af71, type: 3}
+    - target: {fileID: 4383162118079454613, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _RequiredTimeInZone
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865296419895197410, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _EnableGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612431424840677051, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187455674553451605, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_Name
+      value: GoalSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187455674553451605, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667468775420095562, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _EnableGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667468775420095562, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: UnlockSpaceshipZRotation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667468775420095562, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: RandomizeSpaceshipZRotation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667468775420095562, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: SpaceshipStartAngularImpulse
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105671956506126452, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+      propertyPath: _SmoothSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2e8095c08f35414cae23b98703fad86, type: 3}
+--- !u!1 &1377347763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377347765}
+  - component: {fileID: 1377347764}
+  m_Layer: 0
+  m_Name: SolarWind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1377347764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377347763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8685d6b62e1442a8b4b508747521cd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SolarWindHazard
+  _FirstCalmSeconds: 0
+  _CalmSeconds: 1.5
+  _WarningSeconds: 1
+  _GustSeconds: 2.5
+  _GustForce: 30
+  _Direction: 0
+  _MinDistanceFromGoal: 0.75
+  _WallsHaveBodies: 1
+  _RequireSpringJoint: 1
+  _RequireConnectedBody: 1
+  _RopeSnapStretch: 1
+  _ShowOnScreen: 1
+--- !u!4 &1377347765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377347763}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1791570163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1417136001343635468, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+  m_PrefabInstance: {fileID: 1849345530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1791570167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791570163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3db713c360e4ba79756b767b7298e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MyCustomSpaceshipController
+--- !u!1001 &1849345530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1417136001343635468, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_Name
+      value: Spaceship
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539426526116953986, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1417136001343635468, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1791570167}
+  m_SourcePrefab: {fileID: 100100000, guid: b14996cfd73b7e84aa759db47730ac92, type: 3}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1073378382}
+  - {fileID: 1849345530}
+  - {fileID: 1377347765}
