@@ -35,6 +35,13 @@ public class StarField : MonoBehaviour
 
         /// <summary>A wall of still stars across the route, rebuilt whenever a Goal spawns.</summary>
         BarrierOnGoalSpawn,
+
+        /// <summary>
+        /// Stars drift along -X through a long tunnel (the final level). Released a few metres
+        /// ahead of the ship, killed when they leave the belt. A level switches the flow on and
+        /// off, and sets its rate and height, from SetBelt.
+        /// </summary>
+        Belt,
     }
 
     public static StarField Instance { get; private set; }
@@ -94,6 +101,23 @@ public class StarField : MonoBehaviour
     [Tooltip("How far beyond the arena a star is deleted, in metres.")]
     [SerializeField] float _DespawnMargin = 6.0f;
 
+    [Header("Belt")]
+    [Tooltip("The belt runs between these two X. Stars are released at most at the larger one and " +
+             "die when they pass the smaller one.")]
+    [SerializeField] Vector2 _BeltXRange = new Vector2(-9.0f, 29.0f);
+
+    [Tooltip("How far ahead of the ship, along +X, a star is released.")]
+    [SerializeField] float _BeltSpawnAhead = 14.0f;
+
+    [Tooltip("Stars are released within this half height around Y = 0. A level changes it with SetBelt.")]
+    [SerializeField] float _BeltHalfHeight = 6.0f;
+
+    [Header("Queries")]
+    [Tooltip("Gives every star a TRIGGER SphereCollider (radius = the star's radius). A trigger " +
+             "does not push anything : the sphere-sphere contact stays yours. But it lets a " +
+             "Raycast, a SphereCast or an OverlapSphere SEE the stars. Off : stars stay invisible to queries (Level 04).")]
+    [SerializeField] bool _QueryableStars = false;
+
     [Header("HUD")]
     [SerializeField] bool _ShowCounter = true;
 
@@ -106,6 +130,10 @@ public class StarField : MonoBehaviour
 
     GoalSpawner _GoalSpawner;
     GoalComponentBase _TrackedGoal;
+
+    bool _BeltFlowing;
+    float _BeltInterval = 0.5f;
+    float _BeltCountdown;
 
     bool _RespawnPending;
     int _HitsSinceRespawn;
@@ -191,9 +219,26 @@ public class StarField : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Belt mode : turns the flow on or off, and sets how often a star is released and the half
+    /// height of the band they are released in. Stars already flying keep flying.
+    /// </summary>
+    public void SetBelt(bool flowing, float secondsBetweenStars, float halfHeight)
+    {
+        _BeltFlowing = flowing;
+        _BeltInterval = Mathf.Max(0.05f, secondsBetweenStars);
+        _BeltHalfHeight = halfHeight;
+    }
+
     void Update()
     {
         CullStars();
+
+        if (_Placement == PlacementMode.Belt)
+        {
+            UpdateBelt();
+            return;
+        }
 
         if (_Placement == PlacementMode.BarrierOnGoalSpawn)
         {
@@ -315,6 +360,49 @@ public class StarField : MonoBehaviour
     /// Drops the stars that have left the arena, and any that were destroyed elsewhere.
     /// Backwards, because removing while iterating forwards skips an entry.
     /// </summary>
+    void UpdateBelt()
+    {
+        if (!_BeltFlowing)
+        {
+            return;
+        }
+
+        _BeltCountdown -= Time.deltaTime;
+        if (_BeltCountdown > 0.0f)
+        {
+            return;
+        }
+
+        _BeltCountdown = _BeltInterval;
+
+        if (_Stars.Count >= _MaxAlive)
+        {
+            return;
+        }
+
+        float scale = Random.Range(_ScaleRange.x, _ScaleRange.y);
+        float starRadius = scale * 0.5f;
+
+        float x = Mathf.Min(_ShipBody.position.x + _BeltSpawnAhead, _BeltXRange.y);
+
+        float y;
+        if (Random.value < _AimedFraction)
+        {
+            // On a collision course with where the ship is now.
+            float band = _ShipRadius + starRadius;
+            y = _ShipBody.position.y + Random.Range(-band, band);
+        }
+        else
+        {
+            y = Random.Range(-_BeltHalfHeight, _BeltHalfHeight);
+        }
+
+        y = Mathf.Clamp(y, -_BeltHalfHeight, _BeltHalfHeight);
+
+        Vector3 velocity = Vector3.left * Random.Range(_SpeedRange.x, _SpeedRange.y);
+        SpawnStar(new Vector3(x, y, 0.0f), scale, velocity);
+    }
+
     void CullStars()
     {
         float bound = ArenaExtent() + _DespawnMargin;
@@ -329,7 +417,9 @@ public class StarField : MonoBehaviour
                 continue;
             }
 
-            if (star.transform.position.magnitude > bound)
+            if (_Placement == PlacementMode.Belt
+                ? (star.transform.position.x < _BeltXRange.x)
+                : (star.transform.position.magnitude > bound))
             {
                 _Stars.RemoveAt(i);
                 Destroy(star.gameObject);
@@ -391,6 +481,13 @@ public class StarField : MonoBehaviour
             Destroy(spawned);
             enabled = false;
             return;
+        }
+
+        if (_QueryableStars)
+        {
+            SphereCollider collider = spawned.AddComponent<SphereCollider>();
+            collider.radius = 0.5f; // a Unity sphere is 1 unit across, scaled by the star's own scale
+            collider.isTrigger = true;
         }
 
         star.Init(this, _ShipBody, _ShipRadius, Random.Range(_MassRange.x, _MassRange.y), velocity);

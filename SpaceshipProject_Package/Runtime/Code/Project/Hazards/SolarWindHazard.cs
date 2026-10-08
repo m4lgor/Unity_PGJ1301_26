@@ -87,6 +87,11 @@ public class SolarWindHazard : MonoBehaviour
              "centimetres. 0 : never snap.")]
     [SerializeField] private float _RopeSnapStretch = 1.0f;
 
+    [Header("Switch")]
+    [Tooltip("Off : the wind does not blow, and nothing is shown. The final level switches it on " +
+             "when the ship enters the last stretch (see SetActive).")]
+    [SerializeField] private bool _StartsActive = true;
+
     [Header("Display")]
     [SerializeField] private bool _ShowOnScreen = true;
 
@@ -100,6 +105,40 @@ public class SolarWindHazard : MonoBehaviour
     public static SolarWindHazard Instance { get; private set; }
 
     public Phase CurrentPhase { get; private set; } = Phase.Calm;
+
+    /// <summary>False : no cycle, no force, no banner.</summary>
+    public bool IsActive { get; private set; } = true;
+
+    /// <summary>
+    /// Switches the wind on or off. Off in the middle of a warning or a gust : the controller is told
+    /// OnGustEnded, so a tether it tied can be let go. On : the cycle restarts with a calm.
+    /// </summary>
+    public void SetActive(bool active, float firstCalmSeconds)
+    {
+        if (active == IsActive)
+        {
+            return;
+        }
+
+        IsActive = active;
+
+        if (!active)
+        {
+            bool wasBlowing = CurrentPhase != Phase.Calm;
+            CurrentPhase = Phase.Calm;
+            TimeLeftInPhase = 0.0f;
+            _PhaseTime = 0.0f;
+            if (wasBlowing && _Controller)
+            {
+                _Controller.OnGustEnded();
+            }
+            return;
+        }
+
+        CurrentPhase = Phase.Calm;
+        _PhaseTime = firstCalmSeconds;
+        TimeLeftInPhase = firstCalmSeconds;
+    }
 
     /// <summary>Where the wind pushes. Unit vector on the Z = 0 plane. Chosen at the warning, fixed until the gust ends.</summary>
     public Vector3 CurrentDirection { get; private set; } = Vector3.right;
@@ -145,11 +184,17 @@ public class SolarWindHazard : MonoBehaviour
             GiveWallsBodies();
         }
 
+        IsActive = _StartsActive;
         EnterPhase(Phase.Calm, _FirstCalmSeconds);
     }
 
     private void Update()
     {
+        if (!IsActive)
+        {
+            return;
+        }
+
         _PhaseTime -= Time.deltaTime;
         TimeLeftInPhase = Mathf.Max(0.0f, _PhaseTime);
 
@@ -310,7 +355,7 @@ public class SolarWindHazard : MonoBehaviour
             SnapOverstretchedRopes();
         }
 
-        if (CurrentPhase != Phase.Gust || !_ShipBody)
+        if (!IsActive || CurrentPhase != Phase.Gust || !_ShipBody)
         {
             return;
         }
@@ -379,7 +424,7 @@ public class SolarWindHazard : MonoBehaviour
 
     private void OnGUI()
     {
-        if (!_ShowOnScreen || CurrentPhase == Phase.Calm)
+        if (!IsActive || !_ShowOnScreen || CurrentPhase == Phase.Calm)
         {
             return;
         }
@@ -421,7 +466,7 @@ public class SolarWindHazard : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (!Application.isPlaying || CurrentPhase == Phase.Calm || !_ShipBody)
+        if (!Application.isPlaying || !IsActive || CurrentPhase == Phase.Calm || !_ShipBody)
         {
             return;
         }

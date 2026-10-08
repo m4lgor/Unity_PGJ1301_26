@@ -147,6 +147,17 @@ public class SpaceshipControllerBase : MonoBehaviour
         // Override this to know a gust is over.
     }
 
+    /// <summary>
+    /// Final level. The ship hit a wall or a star hard enough, and was put back at the last
+    /// checkpoint, at rest. Whatever you were holding on to (a tether, a plan) is gone : the
+    /// level removed the joints. Start again from here.
+    /// </summary>
+    /// <param name="checkpoint">Where the ship is now.</param>
+    public virtual void OnSentBackToCheckpoint(Vector3 checkpoint)
+    {
+        // Override this to forget what no longer holds.
+    }
+
     protected void OnDrawGizmos()
     {
         if (!GlobalSettings.Instance)

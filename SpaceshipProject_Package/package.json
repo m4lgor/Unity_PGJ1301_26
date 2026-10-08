@@ -110,8 +110,13 @@
       "path": "Samples~/06_Joints"
     },
     {
+      "displayName": "07 - Controleurs, squelettes et ragdolls",
+      "description": "Controleurs et ragdolls. TP Controleur : un CharacterController (marcher, sauter, camera a l'epaule) sur un terrain d'escaliers, de pentes et d'obstacles, puis un parcours. TP Tir : viser, tirer, et casser la corde d'un ragdoll suspendu. DEMO Ragdoll : creer un ragdoll avec le Ragdoll Wizard et le secouer a la souris.",
+      "path": "Samples~/07_Controllers"
+    },
+    {
       "displayName": "99 - Projet",
-      "description": "Le projet Spaceship : les scenes des niveaux 00 a 06. Reimportable sans risque, votre controleur n'est pas dedans.",
+      "description": "Le projet Spaceship : les scenes des niveaux 00 a 07. Reimportable sans risque, votre controleur n'est pas dedans.",
       "path": "Samples~/99_Project"
     }
   ]

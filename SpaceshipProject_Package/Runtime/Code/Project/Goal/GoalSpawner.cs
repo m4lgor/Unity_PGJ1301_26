@@ -24,6 +24,28 @@ public class GoalSpawner : MonoBehaviour
     /// </summary>
     [SerializeField] float _RequiredTimeInZone = -1.0f;
 
+    [Header("Sequence (final level)")]
+    [Tooltip("A fixed list of goal positions, played in order. Empty : goals appear at random, as in every " +
+             "other level. With a list, reaching a goal brings the next one, and after the last the " +
+             "level is over : no new goal.")]
+    [SerializeField] Vector3[] _SequencePositions = new Vector3[0];
+
+    [Tooltip("Seconds to hold each goal of the sequence. Missing entries use _RequiredTimeInZone.")]
+    [SerializeField] float[] _SequenceHoldSeconds = new float[0];
+
+    private int _SequenceIndex;
+    private bool _SequenceDone;
+
+    /// <summary>Index of the goal in play in the sequence (0 based). Count when it is over.</summary>
+    public int SequenceIndex { get { return _SequenceIndex; } }
+    public int SequenceCount { get { return _SequencePositions != null ? _SequencePositions.Length : 0; } }
+    public bool HasSequence { get { return SequenceCount > 0; } }
+    public bool SequenceFinished { get { return _SequenceDone; } }
+    public Vector3 SequencePosition(int index) { return _SequencePositions[index]; }
+
+    /// <summary>A goal of the sequence was reached : its index (before moving on to the next).</summary>
+    public event System.Action<int> SequenceGoalReached;
+
     private GameObject _currentGoal;
     private Vector2 _xLimits = new Vector2(-10f, 10f);   // [minX, maxX]
     private Vector2 _yLimits = new Vector2(-10f, 10f);   // [minY, maxY]
@@ -85,6 +107,19 @@ public class GoalSpawner : MonoBehaviour
     {
         if (_GoalPrefab == null) { Debug.LogError("Goal prefab is not assigned."); return; }
         if (_spaceshipComponent == null) { Debug.LogError("Spaceship reference is missing."); return; }
+
+        if (HasSequence)
+        {
+            if (_SequenceIndex >= SequenceCount)
+            {
+                _SequenceDone = true;
+                return;
+            }
+
+            float hold = _SequenceIndex < _SequenceHoldSeconds.Length ? _SequenceHoldSeconds[_SequenceIndex] : _RequiredTimeInZone;
+            SpawnAt(_SequencePositions[_SequenceIndex], hold);
+            return;
+        }
 
         if (_UseFixedSpawn)
         {
@@ -148,6 +183,11 @@ public class GoalSpawner : MonoBehaviour
     /// </summary>
     void SpawnAt(Vector3 position)
     {
+        SpawnAt(position, _RequiredTimeInZone);
+    }
+
+    void SpawnAt(Vector3 position, float requiredTimeInZone)
+    {
         // (Re)spawn and wire the behaviour
         if (_currentGoal != null) Destroy(_currentGoal);
         _currentGoal = Instantiate(_GoalPrefab, position, Quaternion.identity);
@@ -160,7 +200,7 @@ public class GoalSpawner : MonoBehaviour
 
         var behaviour = _currentGoal.GetComponent<GoalComponentBase>();
         if (behaviour == null) behaviour = _currentGoal.AddComponent<GoalComponentBase>();
-        behaviour.Init(this, _spaceshipComponent, _RequiredTimeInZone);
+        behaviour.Init(this, _spaceshipComponent, requiredTimeInZone);
         behaviour.OnReady = () =>
         {
             _spaceshipComponent?.OnGoalSpawned();
@@ -179,6 +219,13 @@ public class GoalSpawner : MonoBehaviour
 
     public void OnGoalReached()
     {
+        if (HasSequence)
+        {
+            int reached = _SequenceIndex;
+            _SequenceIndex++;
+            SequenceGoalReached?.Invoke(reached);
+        }
+
         RespawnGoal();
     }
 

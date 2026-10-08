@@ -75,7 +75,12 @@ public class LockedCameraOrtho : MonoBehaviour
         var targetObject2 = GameObject.FindFirstObjectByType<GoalComponentBase>();
         if (!targetObject2)
         {
-            Debug.LogError("Can't find a GoalComponent in this scene. Contact your favorite teacher.");
+            // A level with a sequence of goals ends with none left : that is not a mistake.
+            GoalSpawner spawner = GameObject.FindFirstObjectByType<GoalSpawner>();
+            if (spawner == null || !spawner.SequenceFinished)
+            {
+                Debug.LogError("Can't find a GoalComponent in this scene. Contact your favorite teacher.");
+            }
         }
         else
         {
