@@ -110,9 +110,24 @@
       "path": "Samples~/06_Joints"
     },
     {
+      "displayName": "06 - Contraintes et joints (Solutions)",
+      "description": "Correction du cours 06",
+      "path": "Samples~/Solutions/06_Constraints"
+    },
+    {
       "displayName": "07 - Controleurs, squelettes et ragdolls",
       "description": "Controleurs et ragdolls. TP Controleur : un CharacterController (marcher, sauter, camera a l'epaule) sur un terrain d'escaliers, de pentes et d'obstacles, puis un parcours. TP Tir : viser, tirer, et casser la corde d'un ragdoll suspendu. DEMO Ragdoll : creer un ragdoll avec le Ragdoll Wizard et le secouer a la souris.",
       "path": "Samples~/07_Controllers"
+    },
+    {
+      "displayName": "07 - Controleurs, squelettes et ragdolls (Solutions)",
+      "description": "Corrections du cours 07 : le controleur du heros (SOLUTION_HeroController) et la corde du ragdoll suspendu (SOLUTION_RagdollTarget). Import separe, a distribuer apres la correction.",
+      "path": "Samples~/Solutions/07_Controllers"
+    },
+    {
+      "displayName": "08 - Physique, performance et debogage",
+      "description": "La boucle physique, le Profiler et le debogueur. DEMO Lab de physique : une arene ou chaque cout de la boucle (pas fixes, corps, callbacks, requetes) s'active au clavier. DEMO Debogueur et DEMO Debogueur de physique : une touche par fonction du debogueur. TP Chasse aux bogues : un jeu de plateforme avec des bogues a trouver au debogueur et des problemes de performance a trouver au Profiler.",
+      "path": "Samples~/08_Profiling"
     },
     {
       "displayName": "99 - Projet",
